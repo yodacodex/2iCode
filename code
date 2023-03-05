@@ -1,15 +1,32 @@
+"""
+Assumptions:
+
+- Solution also works for duplicates less than 4
+- Function only works for list of length 10, list of ints
+
+    """
+
+
 def remove_duplicates_and_sort(numbers):
+
     """
  Takes in a list of numbers & return a sorted list with no duplicates.
     """
     
-    # Remove values outside the boundary of 1-100
-    valid_numbers = [n for n in numbers if n >= 1 and n <= 100]
+        # 3 Checkes done here:
     
-    # Check that all values in the list are integers
+        # Checks that all values in the list are integers
     if not all(isinstance(n, int) for n in numbers):
         raise TypeError("Input list must contain only integers")
     
+         # Checks that the list has exactly 10 numbers
+    if len(numbers) != 10:
+        raise ValueError("List must contain exactly 10 numbers")
+    
+    # Remove values outside the boundary of 1-100
+    valid_numbers = [n for n in numbers if n >= 1 and n <= 100]
+     
+
     # Removes duplicates and sorts in descending order
     unique_numbers = list(set(numbers))
     unique_numbers.sort(reverse=True)
@@ -19,7 +36,7 @@ def remove_duplicates_and_sort(numbers):
 
 
 # list containing 10 numbers
-num_list = [5.5, 15, 15, 10, 12, 15, 35, 90, 20, 15]
+num_list = [5, 15, 15, 10, 12, 15, 35, 90, 20, 15]
 
 # Removes duplicates and sort the list
 sorted_list = remove_duplicates_and_sort(num_list)
